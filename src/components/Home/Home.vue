@@ -56,11 +56,13 @@
             <div class="skill-logo">
               <b-img v-for="item in ['html', 'css', 'js', 'webpack', 'vue']"
                      :class="activeClass(item)"
+                     :key="item"
                      :alt="item" class="m-1" :src="`/src/assets/skills/${item}.png`"/>
             </div>
             <div class="skill-logo">
               <b-img v-for="item in ['jquery', 'php-mysql', 'bootstrap']"
                      :class="activeClass(item)"
+                     :key="item"
                      :alt="item" class="m-1" :src="`/src/assets/skills/${item}.png`"/>
             </div>
           </div>
