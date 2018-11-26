@@ -3,11 +3,7 @@
 
     <app-header></app-header>
 
-    <transition name="fade"
-                enter-active-class="fade-in"
-                leave-active-class="hidden"
-                mode="out-in">
-
+    <transition name="fade" enter-active-class="fade-in" leave-active-class="hidden" mode="out-in">
       <router-view></router-view>
     </transition>
 

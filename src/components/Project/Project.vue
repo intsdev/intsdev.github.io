@@ -2,7 +2,9 @@
   <div>
     <div class="container" v-if="getProject(name)">
       <section class="block">
-        <component :is="name"></component>
+
+        <div v-html="projectData"></div>
+
       </section>
     </div>
     <e404 v-else></e404>
@@ -11,24 +13,26 @@
 
 <script>
   import E404 from './../E404';
-  import Jpbooks from './views/Jpbooks';
-  import Autotras from './views/Autotras';
-  import Scanchange from './views/Scanchange';
-  import Hamiltonhouse from './views/Hamiltonhouse';
-  import BotForVk from './views/Botvk';
 
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapActions } from 'vuex';
 
   export default {
-    components: {
-      E404, Jpbooks, Autotras, Scanchange, Hamiltonhouse, BotForVk
-    },
+    components: { E404 },
     props: ['name'],
+    data() {
+      return {
+        projectData: ''
+      }
+    },
     computed: {
       ...mapGetters('projects', {
-        projects: 'all',
         getProject: 'get'
       })
+    },
+    created() {
+      this.$store.dispatch('projects/loadProject', {name: this.name}).then((response) => {
+        this.projectData = response.data;
+      });
     }
   }
 </script>

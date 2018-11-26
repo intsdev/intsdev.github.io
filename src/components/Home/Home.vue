@@ -25,7 +25,7 @@
     <div class="container">
 
       <section class="block">
-        <h3>Мой стек:</h3>
+        <h3>Мой стек</h3>
 
         <div class="row">
           <div class="col-lg-6 col-md">
@@ -71,7 +71,7 @@
       </section>
 
       <section class="block">
-        <h3>Последние проекты:</h3>
+        <h3>Последние проекты</h3>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12" v-for="item in projects">
@@ -212,7 +212,6 @@
     transform: scale(1.1);
   }
   .skill-shadow {
-    transform: scale(0.9);
     opacity: 0.3;
   }
   /* Project items */

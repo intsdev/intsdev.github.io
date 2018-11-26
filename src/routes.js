@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import {store} from './store';
+import { store } from './store';
 
 Vue.use(VueRouter);
 
@@ -14,25 +14,48 @@ const routes = [
     name: 'home',
     path: '',
     component: Home,
+    meta: {
+      title: 'Intsdev portfolio'
+    }
   },
   {
     name: 'project',
     path: '/project/:name',
     component: Project,
-    props: true
+    props: true,
+    meta: {
+      title: route => {
+        /* return custom title based on route, store or anything */
+        return store.getters['projects/get'](route.params.name).title;
+      }
+    }
   },
   {
     name: 'contacts',
     path: '/contacts',
-    component: Contacts
+    component: Contacts,
+    meta: {
+      title: 'Contacts'
+    }
   },
   {
     path: '*',
-    component: E404
+    component: E404,
+    meta: {
+      title: 'Not found :('
+    }
   }
 ];
 
-export default new VueRouter({
+let router = new VueRouter({
   mode: 'history',
   routes
 });
+
+router.afterEach((to, from) => {
+  Vue.nextTick(() => {
+    document.title = (typeof to.meta.title === "function") ? to.meta.title(to) : to.meta.title;
+  })
+})
+
+export default router;

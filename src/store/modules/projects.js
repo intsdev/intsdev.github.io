@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default {
   namespaced: true,
   state: {
@@ -28,14 +30,28 @@ export default {
     all(state){
       return state.items;
     },
-    get: (state, getters) => (name) => {
-      return state.items.find(one => one.route === name);
+    get: (state, getters) => (route) => {
+      return state.items.find(one => one.route === route);
     }
   },
-  mutations: {
-
-  },
   actions: {
+    loadProject(store, data){
+      return new Promise((resolve, reject) => {
+        let project = store.getters.get(data.name);
 
+        if(project) {
+          axios.get(`/src/assets/projects/${project.route}.md`).then((response) => {
+            resolve(response);
+          })
+          .catch(function(error) {
+            reject(error);
+          });
+        } else {
+          reject('project not found');
+        }
+
+      });
+
+    },
   }
 };

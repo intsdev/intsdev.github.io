@@ -57,18 +57,7 @@ export default {
     }
   },
   actions: {
-    // clearForm(store) {
-
-    // },
     send(store) {
-      // store.commit('setStatus', 'pending');
-      // setTimeout(() => {
-      //   store.commit('setStatus', 'init');
-      //   store.commit('clearInfo');
-      // }, 5000);
-
-      // return;
-
       return new Promise((resolve, reject) => {
         if(store.getters.canSend){
           store.commit('setStatus', 'pending');
