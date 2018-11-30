@@ -1,4 +1,4 @@
-import firebase from ':src/firebase'
+import db from ':src/firebase'
 
 export default {
   namespaced: true,
@@ -62,17 +62,13 @@ export default {
         if(store.getters.canSend){
           store.commit('setStatus', 'pending');
 
-          let db = firebase.firestore();
+
           let info = store.getters.getFormInfo;
           let data = {};
 
           info.forEach((item) => {
             data[item.key] = item.value;
           })
-
-          db.settings({
-            timestampsInSnapshots: true
-          });
 
           db.collection("messages").add(data)
             .then(function(docRef) {

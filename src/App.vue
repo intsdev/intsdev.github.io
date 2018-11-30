@@ -50,9 +50,10 @@
 </script>
 
 <style>
-  body {
+  body, html {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     text-rendering: optimizeLegibility;
+    /*font-size: 20px;*/
   }
 
   section.block {
@@ -66,6 +67,7 @@
 
   /*
     Perspective Transition
+    https://github.com/Chaunjie/page-transitions
   */
   html { padding-bottom: 56px; }
   body { overflow: auto; background-color: #314164; /*background-color: #2b3e51;*/ }

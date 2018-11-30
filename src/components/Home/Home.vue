@@ -25,7 +25,7 @@
     <div class="container">
 
       <section class="block">
-        <h3>Мой стек</h3>
+        <h2>Мой стек</h2>
 
         <div class="row">
           <div class="col-lg-6 col-md">
@@ -71,7 +71,7 @@
       </section>
 
       <section class="block">
-        <h3>Последние проекты</h3>
+        <h2>Последние проекты</h2>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12" v-for="item in projects">
