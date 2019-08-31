@@ -10,13 +10,16 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "bootstrap-vue": "^2.0.0-rc.11",
-    "firebase": "^5.5.5",
+    "aos": "^3.0.0-beta.6",
+    "axios": "^0.18.1",
+    "bootstrap-vue": "^2.0.0-rc.28",
+    "firebase": "^6.5.0",
     "highlight.js": "^9.13.1",
     "vue": "^2.5.11",
     "vue-awesome": "^3.2.0",
     "vue-router": "^3.0.1",
+    "vue-scrollto": "^2.13.0",
+    "vue-typer": "^1.2.0",
     "vuex": "^3.0.1"
   },
   "browserslist": [
@@ -35,6 +38,6 @@
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.11.5"
   }
 }
