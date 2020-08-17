@@ -28,9 +28,8 @@
 
 <p>Адрес проекта: <a href="http://jpbooks.ru" target="_blank" rel="nofollow">jpbooks.ru</a></p>
 
-
 <style>
-  h1 {
+  /* h1 {
     color: green;
-  }
+  } */
 </style>

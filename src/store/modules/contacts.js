@@ -1,28 +1,28 @@
-import db from ':src/firebase'
+import db from ":src/firebase";
 
 export default {
   namespaced: true,
   state: {
-    sendingStatus: 'init', // init | pending | done
+    sendingStatus: "init", // init | pending | done
     formInfo: [
       {
-        name: 'Имя',
-        key: 'name',
-        value: '',
+        name: "Имя",
+        key: "name",
+        value: "",
         pattern: /^[a-zA-Zа-яА-Я ]{2,30}$/
       },
       {
-        name: 'Email',
-        key: 'email',
-        value: '',
+        name: "Email",
+        key: "email",
+        value: "",
         pattern: /.+/
       },
       {
-        name: 'Сообщение',
-        key: 'message',
-        value: '',
+        name: "Сообщение",
+        key: "message",
+        value: "",
         pattern: /.+/,
-        type: 'textarea'
+        type: "textarea"
       }
     ]
   },
@@ -31,15 +31,15 @@ export default {
       return state.formInfo;
     },
     canSend(state, getters) {
-      return state.formInfo.some((item) => {
-        return item.pattern.test(item.value)
+      return state.formInfo.some(item => {
+        return item.pattern.test(item.value);
       });
     },
     isSending(state, getters) {
-      return state.sendingStatus === 'pending';
+      return state.sendingStatus === "pending";
     },
     isDone(state, getters) {
-      return state.sendingStatus === 'done';
+      return state.sendingStatus === "done";
     }
   },
   mutations: {
@@ -50,30 +50,30 @@ export default {
       state.sendingStatus = status;
     },
     clearForm(state) {
-      state.sendingStatus = 'init';
-      state.formInfo.forEach((one) => {
-        one.value = '';
+      state.sendingStatus = "init";
+      state.formInfo.forEach(one => {
+        one.value = "";
       });
     }
   },
   actions: {
     send(store) {
       return new Promise((resolve, reject) => {
-        if(store.getters.canSend){
-          store.commit('setStatus', 'pending');
-
+        if (store.getters.canSend) {
+          store.commit("setStatus", "pending");
 
           let info = store.getters.getFormInfo;
           let data = {};
 
-          info.forEach((item) => {
+          info.forEach(item => {
             data[item.key] = item.value;
-          })
+          });
 
-          db.collection("messages").add(data)
+          db.collection("messages")
+            .add(data)
             .then(function(docRef) {
-              if(docRef.id){
-                store.commit('setStatus', 'done');
+              if (docRef.id) {
+                store.commit("setStatus", "done");
                 resolve();
               }
             })
@@ -81,8 +81,7 @@ export default {
               console.error("Error adding document: ", error);
               reject(error);
             });
-        }
-        else{
+        } else {
           reject();
         }
       });
