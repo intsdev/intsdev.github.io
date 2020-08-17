@@ -9,11 +9,10 @@
 
 <script>
 import E404 from "./../E404";
-import Jpbooks from "./Jpbooks";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  components: { E404, Jpbooks },
+  components: { E404 },
   props: ["name"],
   data() {
     return {
@@ -23,10 +22,7 @@ export default {
   computed: {
     ...mapGetters("projects", {
       getProject: "get"
-    }),
-    currentProject() {
-      return "jpbooks";
-    }
+    })
   },
   methods: {
     load() {
