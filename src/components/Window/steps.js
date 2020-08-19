@@ -2,7 +2,8 @@ export default {
   init: [
     { message: true, text: 'Привет! Меня зовут Александр!' },
     { message: true, text: 'Хотите узнать больше или связаться со мной?' },
-    { action: true,
+    {
+      action: true,
       buttons: [
         { text: 'Узнать больше!', answer: 'Я хочу узнать больше!', next: 'more' },
         { text: 'Связаться!', answer: 'Я хочу связаться!', next: 'contactName' }
@@ -11,9 +12,10 @@ export default {
   ],
   contactName: [
     { message: true, text: 'Хорошо! Как вас зовут?' },
-    { form: 'contactName',
+    {
+      form: 'contactName',
       // validate: ['no-empty', 'email'],
-      validate: function() {
+      validate: function () {
         return { res: this.result.trim() != '' }
       },
       result: '', // возможно перенести в инпут. Подумать над несколькими инпутами в форме
@@ -23,18 +25,19 @@ export default {
   ],
   contactEmail: [
     // «Я заинтригован» - фраза смущает, не знаю почему) - Илья
-    { message: true, text: 'Я заинтригован! Спасибо! Мне просто нужна ваша электронная почта, чтобы я мог связаться с вами!' },
+    { message: true, text: 'Отлично! Мне просто нужна ваша электронная почта, чтобы я мог связаться с вами!' },
     { next: 'emailForm' },
     // { exec: () => this.pushTask('emailForm') },
   ],
   emailForm: [
-    { form: 'contactEmail',
-      validate: function() {
+    {
+      form: 'contactEmail',
+      validate: function () {
         // empty
-        if(this.result.trim() == '') { return { res: false } }
+        if (this.result.trim() == '') { return { res: false } }
 
         // not email
-        if( /(.+)@(.+){2,}\.(.+){2,}/.test(this.result) ){
+        if (/(.+)@(.+){2,}\.(.+){2,}/.test(this.result)) {
           return { res: true }
         } else {
           return { res: false, next: 'incorrectEmail' }
@@ -54,16 +57,18 @@ export default {
     { message: true, text: 'Похоже вы не подключены к интернету.' },
     { message: true, text: 'Или по какой-то другой причине я не могу отправить информацию. :(' },
     { message: true, text: 'Перезагрузите страницу или воспользуйтесь, пожалуйста, формой обратной связи:' },
-    { link: true,
+    {
+      link: true,
       router: true,
-      to: {name: 'contacts'},
+      to: { name: 'contacts' },
       text: 'Формой обратной связи'
     },
   ],
   incorrectEmail: [
-    { message: true, text: 'Ваш email адрес напоминает мне о poop emoji. Что-то здесь не так... 💩' },
+    { message: true, text: 'Хмм.. что-то не так с Вашим email адресом. На такие адреса письма не доставляются 🙂' },
     { message: true, text: 'Может попробуем еще раз? ;)' },
-    { action: true,
+    {
+      action: true,
       buttons: [
         { text: 'Да, давай еще раз!', next: 'emailForm' },
         { text: 'Нет!', next: 'byeBadEmail' }
@@ -76,9 +81,10 @@ export default {
     { message: true, text: 'До скорой встречи! 👍🤗' },
   ],
   more: [
-    { message: true, text: 'Я чувствую себя воодушевленным. 🙂' },
+    { message: true, text: 'Отлично, рад слышать о Вашей заинтересованности. 🙂' },
     { message: true, text: 'Я пишу и говорю о разработке, и мне повезло, что я работал и работаю над крутыми проектами.' },
-    { action: true,
+    {
+      action: true,
       buttons: [
         { text: 'Ты пишешь?!', next: 'contactWrite' },
         { text: 'Какими проектами?', next: 'whatProjects' }
@@ -91,28 +97,45 @@ export default {
     // мб проще сделать еще task - line - печатать без значка вначале. Или добавить тип message. { message: true, type: 'line' }
     // { message: true, text: `- ScanChange - мониторинг обменников\r\n  - Интернет магазин JPBooks\r\n  - Hamilton House Publishers\r\n  - Bot для VK` },
 
-    { link: true,
+    {
+      link: true,
       router: true,
-      to: {name: 'project', params: {name: 'scanchange'}},
+      to: { name: "project", params: { name: "quizcast" } },
+      text: "- Quizcast - мобильное приложение"
+    },
+    {
+      link: true,
+      router: true,
+      to: { name: "project", params: { name: "evolventalux" } },
+      text: "- Evolventalux - агентство недвижимости"
+    },
+    {
+      link: true,
+      router: true,
+      to: { name: 'project', params: { name: 'scanchange' } },
       text: '- ScanChange - мониторинг обменников'
     },
-    { link: true,
+    {
+      link: true,
       router: true,
-      to: {name: 'project', params: {name: 'jpbooks'}},
+      to: { name: 'project', params: { name: 'jpbooks' } },
       text: '  - Интернет магазин JPBooks'
     },
-    { link: true,
+    {
+      link: true,
       router: true,
-      to: {name: 'project', params: {name: 'hamiltonhouse'}},
+      to: { name: 'project', params: { name: 'hamiltonhouse' } },
       text: '  - Hamilton House Publishers'
     },
-    { link: true,
+    {
+      link: true,
       router: true,
-      to: {name: 'project', params: {name: 'bot-for-vk'}},
+      to: { name: 'project', params: { name: 'bot-for-vk' } },
       text: '  - Bot для VK'
     },
 
-    { action: true,
+    {
+      action: true,
       buttons: [{ text: 'Здорово. Что конкретно ты делал?', next: 'coffeeTalk' }]
     }
 
@@ -138,10 +161,11 @@ export default {
   ],
   coffeeTalk: [
     { message: true, text: 'Я буду рад поговорить об этом за чашечкой кофе. Как вы на это смотрите?' },
-    { action: true,
+    {
+      action: true,
       buttons: [
-      { text: 'Отлично! ☕️', next: 'contactEmail' },
-      { text: 'Нее... 😑', next: 'test' },
+        { text: 'Отлично! ☕️', next: 'contactEmail' },
+        { text: 'Нее... 😑', next: 'test' },
       ]
     }
   ],

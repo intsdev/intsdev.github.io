@@ -15,8 +15,8 @@ const routes = [
     path: "",
     component: Home,
     meta: {
-      title: "Intsdev portfolio"
-    }
+      title: "Intsdev portfolio",
+    },
   },
   {
     name: "project",
@@ -24,31 +24,31 @@ const routes = [
     component: Project,
     props: true,
     meta: {
-      title: route => {
+      title: (route) => {
         /* return custom title based on route, store or anything */
         return store.getters["projects/get"](route.params.name).title;
-      }
-    }
+      },
+    },
   },
   {
     name: "contacts",
     path: "/contacts",
     component: Contacts,
     meta: {
-      title: "Contacts"
-    }
+      title: "Contacts",
+    },
   },
   {
     path: "*",
     component: E404,
     meta: {
-      title: "Not found :("
-    }
-  }
+      title: "Not found :(",
+    },
+  },
 ];
 
-const scrollBehavior = (to, from, savedPosition) => {
-  return new Promise((resolve, reject) => {
+const scrollBehavior = () => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve({ x: 0, y: 0 }), 200);
   });
 };
@@ -56,10 +56,10 @@ const scrollBehavior = (to, from, savedPosition) => {
 let router = new VueRouter({
   mode: "history",
   scrollBehavior,
-  routes
+  routes,
 });
 
-router.afterEach((to, from) => {
+router.afterEach((to) => {
   Vue.nextTick(() => {
     document.title =
       typeof to.meta.title === "function" ? to.meta.title(to) : to.meta.title;

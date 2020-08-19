@@ -7,7 +7,9 @@
       @after-leave="$root.$emit('triggerScroll');"
       mode="out-in"
     >
-      <keep-alive> <router-view></router-view> </keep-alive>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -18,17 +20,14 @@ import AOS from "aos";
 
 export default {
   components: { AppHeader },
-  name: "app",
-  data() {
-    return {};
-  },
+  name: "App",
   created() {
     AOS.init({
       useClassNames: true,
       initClassName: false,
-      animatedClassName: "animated"
+      animatedClassName: "animated",
     });
-  }
+  },
 };
 </script>
 
@@ -44,6 +43,9 @@ html {
 }
 section.block {
   padding: 20px 0 50px;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  font-size: 18px;
 }
 section.block .head {
   margin: 5rem auto 3rem;

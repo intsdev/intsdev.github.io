@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="container" v-if="getProject(name)">
-      <section class="block"><div v-html="projectData"></div></section>
+      <section class="block article">
+        <div v-html="projectData"></div>
+      </section>
     </div>
     <e404 v-else></e404>
   </div>
@@ -16,30 +18,43 @@ export default {
   props: ["name"],
   data() {
     return {
-      projectData: ""
+      projectData: "",
     };
   },
   computed: {
     ...mapGetters("projects", {
-      getProject: "get"
-    })
+      getProject: "get",
+    }),
   },
   methods: {
     load() {
       this.$store
         .dispatch("projects/loadProject", { name: this.name })
-        .then(response => {
+        .then((response) => {
           this.projectData = response.data;
         });
-    }
+    },
   },
   watch: {
     name() {
       this.load();
-    }
+    },
   },
   created() {
     this.load();
-  }
+  },
 };
 </script>
+
+<style>
+section.block.article {
+  max-width: 750px;
+  margin: 0 auto;
+}
+section.article h1 {
+  letter-spacing: 0.3px;
+}
+.gray {
+  color: #868686;
+}
+</style>

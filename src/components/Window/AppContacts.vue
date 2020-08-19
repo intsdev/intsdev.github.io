@@ -5,19 +5,18 @@
 </template>
 
 <script>
-import Contacts from ':src/components/Contacts';
+import Contacts from "@/components/Contacts/Index";
 
 export default {
   components: { Contacts },
-  data () {
-    return {
-    }
-  }
-}
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style>
-  .window-contacts {
-    padding: 10px 30px;
-  }
+.window-contacts {
+  padding: 10px 30px;
+}
 </style>

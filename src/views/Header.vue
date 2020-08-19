@@ -1,27 +1,20 @@
 <template>
-  <b-navbar
-    toggleable="sm"
-    :sticky="sticky"
-    class="header-line"
-    :class="classFix"
-  >
+  <b-navbar toggleable="sm" :sticky="sticky" class="header-line" :class="classFix">
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <router-link :to="{ name: 'home' }" is="b-navbar-brand">
       <div class="brand-name">
         <span class="name-start">Int.</span>
-        <span class="name-end"> <span>Dev</span> </span>
+        <span class="name-end">
+          <span>Dev</span>
+        </span>
       </div>
     </router-link>
 
     <b-collapse is-nav id="nav-collapse">
       <b-navbar-nav>
-        <router-link exact :to="{ name: 'home' }" is="b-nav-item"
-          >Portfolio</router-link
-        >
-        <router-link exact :to="{ name: 'contacts' }" is="b-nav-item"
-          >Contacts</router-link
-        >
+        <router-link exact :to="{ name: 'home' }" is="b-nav-item">Portfolio</router-link>
+        <router-link exact :to="{ name: 'contacts' }" is="b-nav-item">Contacts</router-link>
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto soc-icons">
@@ -52,22 +45,14 @@
 </template>
 
 <script>
-// Bootstrap
-import bNavbar from "bootstrap-vue/es/components/navbar/navbar";
-import bNavbarNav from "bootstrap-vue/es/components/navbar/navbar-nav";
-import bNavbarBrand from "bootstrap-vue/es/components/navbar/navbar-brand";
-import bNavbarToggle from "bootstrap-vue/es/components/navbar/navbar-toggle";
-
-import bCollapse from "bootstrap-vue/es/components/collapse/collapse";
-import bNavItem from "bootstrap-vue/es/components/nav/nav-item";
-import bNavForm from "bootstrap-vue/es/components/nav/nav-form";
-import bNavItemDropdown from "bootstrap-vue/es/components/nav/nav-item-dropdown";
-
-import bDropdownItem from "bootstrap-vue/es/components/dropdown/dropdown-item";
-
-import bButton from "bootstrap-vue/es/components/button/button";
-
-import bFormInput from "bootstrap-vue/es/components/form-input/form-input";
+import {
+  BNavbar,
+  BNavbarNav,
+  BNavbarBrand,
+  BNavbarToggle,
+  BCollapse,
+  BNavItem,
+} from "bootstrap-vue";
 
 // FontAwesome icons
 import Icon from "vue-awesome/components/Icon";
@@ -76,43 +61,39 @@ import "vue-awesome/icons/brands/youtube";
 import "vue-awesome/icons/brands/github";
 
 export default {
+  name: "Header",
   components: {
-    bNavbar,
-    bNavbarNav,
-    bNavbarBrand,
-    bNavbarToggle,
-    bCollapse,
-    bNavItem,
-    bNavForm,
-    bFormInput,
-    bButton,
-    bNavItemDropdown,
-    bDropdownItem,
-    Icon
+    BNavbar,
+    BNavbarNav,
+    BNavbarBrand,
+    BNavbarToggle,
+    BCollapse,
+    BNavItem,
+    Icon,
   },
   data() {
     return {
-      sticky: false
+      sticky: false,
     };
   },
   computed: {
     classFix() {
       return this.sticky ? "header-fix slideInDown animated" : "";
-    }
+    },
   },
   methods: {
     onScroll() {
       let headerLineTop = document.querySelector("body").getBoundingClientRect()
         .top;
       this.sticky = headerLineTop <= -650;
-    }
+    },
   },
   mounted() {
     window.addEventListener("scroll", this.onScroll);
   },
   destroyed() {
     window.removeEventListener("scroll", this.onScroll);
-  }
+  },
 };
 </script>
 
@@ -129,6 +110,9 @@ export default {
 .soc-icons a:hover {
   color: #6eacd6;
 }
+.soc-icons .fa-icon {
+  vertical-align: middle;
+}
 .header-line {
   background: #f8faff;
 }
@@ -144,12 +128,13 @@ export default {
 .brand-name {
   color: #6a889c;
   font-weight: 700;
+  display: flex;
 }
 .brand-name .name-start {
   border: 2px solid;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  padding-left: 5px;
+  padding: 0 5px;
   background-color: #fff;
 }
 .brand-name .name-end {

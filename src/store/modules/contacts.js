@@ -1,4 +1,4 @@
-import db from ":src/firebase";
+import * as server from "@/server";
 
 export default {
   namespaced: true,
@@ -57,34 +57,19 @@ export default {
     }
   },
   actions: {
-    send(store) {
-      return new Promise((resolve, reject) => {
-        if (store.getters.canSend) {
-          store.commit("setStatus", "pending");
+    async send(store) {
+      if (store.getters.canSend) {
+        store.commit("setStatus", "pending");
 
-          let info = store.getters.getFormInfo;
-          let data = {};
+        const info = store.getters.getFormInfo;
 
-          info.forEach(item => {
-            data[item.key] = item.value;
-          });
+        const strArray = info.map(item => `${item.key}: ${item.value}`);
+        strArray.unshift("Portfolio (contacts):");
+        const data = strArray.join("\r\n");
 
-          db.collection("messages")
-            .add(data)
-            .then(function(docRef) {
-              if (docRef.id) {
-                store.commit("setStatus", "done");
-                resolve();
-              }
-            })
-            .catch(function(error) {
-              console.error("Error adding document: ", error);
-              reject(error);
-            });
-        } else {
-          reject();
-        }
-      });
+        await server.send(data);
+        store.commit("setStatus", "done");
+      }
     }
   }
 };
