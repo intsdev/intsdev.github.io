@@ -8,17 +8,20 @@
               Приветствую Вас на страницах моего портфолио.
               <br />Я Web Developer...
               <strong>Full-Stack Developer</strong>
-              <br />На данный момент занимаюсь
-              <strong>Freelance</strong> и личными
-              проектами. Нахожусь
-              <strong>в поиске интересных проектов</strong>,
-              которые в потенциале смогут сделать мир чуточку лучше!
+              <br />На данный момент занимаюсь <strong>Freelance</strong> и
+              личными проектами. Нахожусь
+              <strong>в поиске интересных проектов</strong>, которые в
+              потенциале смогут сделать мир чуточку лучше!
             </p>
 
-            <footer class="blockquote-footer text-right">Create something awesome</footer>
+            <footer class="blockquote-footer text-right">
+              Create something awesome
+            </footer>
           </blockquote>
 
-          <router-link :to="{ name: 'contacts' }" class="btn btn-warning">Contact me</router-link>
+          <router-link :to="{ name: 'contacts' }" class="btn btn-warning"
+            >Contact me</router-link
+          >
         </div>
         <div class="col-lg-5 col-md">
           <app-window></app-window>

@@ -11,7 +11,7 @@
 
 <script>
 import E404 from "./../E404";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   components: { E404 },

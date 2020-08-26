@@ -9,38 +9,38 @@ export default {
         name: "Имя",
         key: "name",
         value: "",
-        pattern: /^[a-zA-Zа-яА-Я ]{2,30}$/
+        pattern: /^[a-zA-Zа-яА-Я ]{2,30}$/,
       },
       {
         name: "Email",
         key: "email",
         value: "",
-        pattern: /.+/
+        pattern: /.+/,
       },
       {
         name: "Сообщение",
         key: "message",
         value: "",
         pattern: /.+/,
-        type: "textarea"
-      }
-    ]
+        type: "textarea",
+      },
+    ],
   },
   getters: {
-    getFormInfo(state, getters) {
+    getFormInfo(state) {
       return state.formInfo;
     },
-    canSend(state, getters) {
-      return state.formInfo.some(item => {
+    canSend(state) {
+      return state.formInfo.some((item) => {
         return item.pattern.test(item.value);
       });
     },
-    isSending(state, getters) {
+    isSending(state) {
       return state.sendingStatus === "pending";
     },
-    isDone(state, getters) {
+    isDone(state) {
       return state.sendingStatus === "done";
-    }
+    },
   },
   mutations: {
     updateFormInfo(state, data) {
@@ -51,10 +51,10 @@ export default {
     },
     clearForm(state) {
       state.sendingStatus = "init";
-      state.formInfo.forEach(one => {
+      state.formInfo.forEach((one) => {
         one.value = "";
       });
-    }
+    },
   },
   actions: {
     async send(store) {
@@ -63,13 +63,13 @@ export default {
 
         const info = store.getters.getFormInfo;
 
-        const strArray = info.map(item => `${item.key}: ${item.value}`);
+        const strArray = info.map((item) => `${item.key}: ${item.value}`);
         strArray.unshift("Portfolio (contacts):");
         const data = strArray.join("\r\n");
 
         await server.send(data);
         store.commit("setStatus", "done");
       }
-    }
-  }
+    },
+  },
 };
