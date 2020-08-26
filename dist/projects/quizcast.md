@@ -25,3 +25,9 @@ Mobile app - React Native, WebSocket
 Chromecast app - React, WebSocket
 Admin panel - Headless CMS Strapi, React, GraphQL
 Server - AWS Lambda -->
+
+<style>
+  /* h1 {
+    color: green;
+  } */
+</style>
