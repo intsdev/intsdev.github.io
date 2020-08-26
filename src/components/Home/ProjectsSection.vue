@@ -120,7 +120,7 @@ section.projects .project-info .read-more {
   background-color: rgb(39, 204, 64);
 }
 .project-item .project-preview {
-  background-image: url("/scanchange-prev.png");
+  background-image: url("/public/scanchange-prev.png");
   background-size: cover;
   min-height: 264px;
   background-color: rgb(255, 255, 255);
@@ -129,25 +129,25 @@ section.projects .project-info .read-more {
   background-position: center;
 }
 .project-item .project-preview.quizcast {
-  background-image: url("/quizcast-prev.jpg");
+  background-image: url("/public/quizcast-prev.jpg");
   background-size: contain;
 }
 .project-item .project-preview.evolventalux {
-  background-image: url("/evolventalux-prev.jpg");
+  background-image: url("/public/evolventalux-prev.jpg");
 }
 .project-item .project-preview.scanchange {
-  background-image: url("/scanchange-prev.png");
+  background-image: url("/public/scanchange-prev.png");
 }
 .project-item .project-preview.autotras {
-  background-image: url("/autotras-prev.png");
+  background-image: url("/public/autotras-prev.png");
 }
 .project-item .project-preview.jpbooks {
-  background-image: url("/jpbooks-prev.jpg");
+  background-image: url("/public/jpbooks-prev.jpg");
 }
 .project-item .project-preview.hamiltonhouse {
-  background-image: url("/hamiltonhouse-prev.jpg");
+  background-image: url("/public/hamiltonhouse-prev.jpg");
 }
 .project-item .project-preview.bot-for-vk {
-  background-image: url("/botvk-prev.png");
+  background-image: url("/public/botvk-prev.png");
 }
 </style>

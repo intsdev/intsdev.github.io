@@ -29,7 +29,7 @@
 
     <div v-show="desktopShow" class="app-hide">
       <div v-for="(icon, ind) in icons" class="terminal-icon" :key="ind">
-        <img @click="onShow(icon)" :src="`/chat/${icon.icon}`" alt />
+        <img @click="onShow(icon)" :src="`/dist/chat/${icon.icon}`" alt />
       </div>
     </div>
   </div>
@@ -76,7 +76,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .window.light .bar {

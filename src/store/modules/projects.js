@@ -45,7 +45,7 @@ export default {
   actions: {
     loadProject(store, data) {
       const project = store.getters.get(data.name);
-      return axios.get(`/projects/${project.route}.md`);
+      return axios.get(`/public/projects/${project.route}.md`);
     },
   },
 };
