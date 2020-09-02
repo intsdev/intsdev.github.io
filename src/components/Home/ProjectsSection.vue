@@ -4,20 +4,14 @@
       <h2 class="head">Некоторые из моих работ</h2>
 
       <div class="row">
-        <div
-          class="col-lg-4 col-md-6 col-sm-12"
-          v-for="(item, ind) in projects"
-          :key="ind"
-        >
+        <div class="col-lg-4 col-md-6 col-sm-12" v-for="(item, ind) in projects" :key="ind">
           <div class="project-item">
             <div class="mac-toolbar">
               <span class="mac-toolbar-btn btn-close"></span>
               <span class="mac-toolbar-btn btn-hide"></span>
               <span class="mac-toolbar-btn btn-open"></span>
             </div>
-            <router-link
-              :to="{ name: 'project', params: { name: item.route } }"
-            >
+            <router-link :to="{ name: 'project', params: { name: item.route } }">
               <div class="project-preview" :class="item.route"></div>
             </router-link>
 

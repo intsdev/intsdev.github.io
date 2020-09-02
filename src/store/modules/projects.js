@@ -26,7 +26,7 @@ export default {
       },
       // {
       //   route: "autotras",
-      //   title: "МФА сайт об автомобилях - Autotras"
+      //   title: "Сайт об автомобилях - Autotras"
       // },
       {
         route: "bot-for-vk",

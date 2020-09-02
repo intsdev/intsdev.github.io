@@ -28,8 +28,5 @@ import Contacts from "@/components/Contacts/Index";
 
 export default {
   components: { Contacts },
-  data() {
-    return {};
-  },
 };
 </script>

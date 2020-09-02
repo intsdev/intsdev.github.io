@@ -31,9 +31,7 @@ export default {
       return state.formInfo;
     },
     canSend(state) {
-      return state.formInfo.some((item) => {
-        return item.pattern.test(item.value);
-      });
+      return state.formInfo.some((item) => item.pattern.test(item.value));
     },
     isSending(state) {
       return state.sendingStatus === "pending";
